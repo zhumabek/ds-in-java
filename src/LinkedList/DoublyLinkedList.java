@@ -5,7 +5,7 @@ public class DoublyLinkedList<T> {
     public Node<T> tail;
     private int size;
 
-    public DoublyLinkedList(){
+    public DoublyLinkedList() {
         this.head = null;
         this.tail = null;
         this.size = 0;
