@@ -1,35 +1,46 @@
 package Queue;
 
-import LinkedList.DoublyLinkedList;
+import java.util.ArrayList;
 
 public class Queue<T> {
-    private final DoublyLinkedList<T> items;
+
+    private int size;
+    private int start;
+    private final ArrayList<T> items;
 
     public Queue(){
-        this.items = new DoublyLinkedList<>();
+        this.items = new ArrayList<>();
+        this.size = 0;
+        this.start = 0;
     }
 
     public boolean isEmpty(){
-        return this.items.isEmpty();
+        return this.size == this.start;
     }
 
     public int size(){
-        return this.items.size();
+        return this.size - this.start;
     }
 
     public T peek() {
-        var firstElem = this.items.getHead();
-
-        return firstElem == null ? null : firstElem.value;
+        return this.items.get(this.start);
     }
 
     public void enqueue(T val){
-        this.items.prepend(val);
+        this.size += 1;
+        this.items.add(val);
     }
 
     public T dequeue(){
-        var popped = this.items.popFromTail();
+        if(this.size == this.start){
+            throw new IllegalStateException("Queue is empty");
+        }
 
-        return popped == null ? null : popped.value;
+        var poppedFromStart = this.items.get(this.start);
+
+        this.items.set(this.start, null);
+        this.start += 1;
+
+        return poppedFromStart;
     }
 }

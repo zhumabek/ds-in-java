@@ -1,11 +1,11 @@
 package LinkedList;
 
-public class DoublyLinkedList<T> {
+public class SinglyLinkedList<T> {
     public Node<T> head;
     public Node<T> tail;
     private int size;
 
-    public DoublyLinkedList() {
+    public SinglyLinkedList() {
         this.head = null;
         this.tail = null;
         this.size = 0;
@@ -32,7 +32,6 @@ public class DoublyLinkedList<T> {
         this.size += 1;
 
         this.tail.next = newNode;
-        newNode.prev = this.tail;
         this.tail = newNode;
     }
 
@@ -49,7 +48,6 @@ public class DoublyLinkedList<T> {
         this.size += 1;
 
         newNode.next = this.head;
-        this.head.prev = newNode;
         this.head = newNode;
     }
 
@@ -69,33 +67,10 @@ public class DoublyLinkedList<T> {
             this.tail = null;
 
         } else {
-            newHead.prev = null;
             this.head = newHead;
         }
 
         popped.next = null;
-
-        return popped;
-    }
-
-    public Node<T> popFromTail(){
-        if(isEmpty()){
-            return null;
-        }
-
-        this.size -= 1;
-
-        var newTail = this.tail.prev;
-        var popped = this.tail;
-        if(newTail == null){
-            this.head = null;
-            this.tail = null;
-        } else {
-            newTail.next = null;
-            this.tail = newTail;
-        }
-
-        popped.prev = null;
 
         return popped;
     }
@@ -122,7 +97,7 @@ public class DoublyLinkedList<T> {
         var currentNode = this.head;
 
         while (currentNode != null){
-            output.append(currentNode.value).append(" <-> ");
+            output.append(currentNode.value).append(" -> ");
             currentNode = currentNode.next;
         }
 

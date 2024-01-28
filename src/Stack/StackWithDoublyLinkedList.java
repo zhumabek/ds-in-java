@@ -2,10 +2,10 @@ package Stack;
 
 import LinkedList.DoublyLinkedList;
 
-public class StackWithLinkedList<T> {
+public class StackWithDoublyLinkedList<T> {
     private final DoublyLinkedList<T> items;
 
-    public StackWithLinkedList(){
+    public StackWithDoublyLinkedList(){
         this.items = new DoublyLinkedList<>();
     }
 
