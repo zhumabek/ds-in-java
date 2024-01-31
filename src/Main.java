@@ -12,6 +12,7 @@ public class Main {
         bst.insert(11);
         bst.insert(16);
         bst.insert(7);
+        bst.insert(1);
 
         bst.display();
         System.out.println("-----------------------------------------");
